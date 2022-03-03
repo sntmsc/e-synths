@@ -25,11 +25,20 @@ function App() {
             <Route path="/sintetizadores">
               <Productos prod={'Sintetizadores'}/>
             </Route>
+            <Route path="/sintetizadores/:id">
+              <Producto/>
+            </Route>
             <Route path="/drums">
               <Productos prod={'Drum Machines'}/>
             </Route>
+            <Route path="/drums/:id">
+              <Producto/>
+            </Route>
             <Route path="/groovebox">
               <Productos prod={'Samplers & Groovebox'}/>
+            </Route>
+            <Route path="/groovebox/:id">
+              <Producto/>
             </Route>
             <Route path="/nosotros">
               <Nosotros/>
