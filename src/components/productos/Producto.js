@@ -9,3 +9,7 @@ const Producto = ()=> {
         </Flex>
     )
 }
+
+
+
+export default Producto
