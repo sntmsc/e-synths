@@ -5,7 +5,8 @@ import OpcionesCompras from "./components/home/OpcionesCompras"
 import Home from './components/home/Home'
 import Nosotros from './components/Nosotros'
 import Contacto from './components/Contacto'
-import Productos from './components/Productos'
+import Productos from './components/productos/Productos'
+import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
 
 

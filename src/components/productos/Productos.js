@@ -1,6 +1,7 @@
 import React from 'react'
 import {Flex, Text, HStack, Checkbox} from "@chakra-ui/react" 
-import {ProductoIndividual} from './home/ProductosDestacados'
+import {ProductoIndividual} from '../home/ProductosDestacados'
+import instrumentsDB from '../../instrumentsDB'
 
 const Productos = ({prod}) =>{
 
@@ -56,18 +57,12 @@ const Productos = ({prod}) =>{
           justify="center"
           alignItems="center"
           wrap="wrap">
-              <ProductoIndividual 
-              nombre={'Cobalt 8'} 
-              precio={'1500'} 
-              img={'./imgs/productos/cobalt.jpg'}/>
-              <ProductoIndividual 
-              nombre={'Juno 60'} 
-              precio={'2500'} 
-              img={'./imgs/productos/juno.jpg'}/>
-              <ProductoIndividual 
-              nombre={'Microkorg'} 
-              precio={'350'} 
-              img={'./imgs/productos/mk.jpg'}/>
+            {instrumentsDB.map(x=>
+               <ProductoIndividual
+               key={x.id}
+               nombre={x.producto}
+               precio={x.precio}
+               img={x.img}/> )}
           </Flex>
       </Flex>
     )
