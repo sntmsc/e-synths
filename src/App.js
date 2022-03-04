@@ -1,3 +1,4 @@
+import {useState, useEffect} from 'react'
 import {ChakraProvider,useMediaQuery} from "@chakra-ui/react" 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Navbar from './components/NavBar'
@@ -8,10 +9,19 @@ import Contacto from './components/Contacto'
 import Productos from './components/productos/Productos'
 import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
+import axios from 'axios'
 
 
 function App() {
   const [isMobile] = useMediaQuery("(max-width: 750px)")
+  const [categorias, setCategorias] = useState([])
+  useEffect(()=>{
+    const getSintes = axios.get('http://localhost:3001/sintetizadores')
+    getSintes.then(response => {
+      console.log(response.data)
+})
+
+  })
 
   return (
     <BrowserRouter>

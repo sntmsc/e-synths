@@ -4,8 +4,9 @@ import {Stack,Flex,Image,Text} from "@chakra-ui/react"
 
 
 const Footer = () =>{
-    const textoFooter = (arr) => arr.map(x => 
+    const textoFooter = (arr) => arr.map((x, i) => 
         <Text
+        key={i}
         fontFamily=" 'Poppins', sans-serif;">{x}</Text>
       )
    

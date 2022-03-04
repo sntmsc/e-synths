@@ -36,10 +36,10 @@ const Categorias = () =>{
         align='center'
         justify='center'
         direction={{base:'column',md:'row'}}>
-            {infoCategorias.map(x =>
+            {infoCategorias.map((x,i) =>
              <Flex
             direction='column'
-            
+            key={i}
             alignItems='center'
             justify='center'
             boxSize='15em'
