@@ -107,8 +107,8 @@ const Navbar = ({isMobile}) => {
                   </MenuButton>
                 </Flex>
                 <MenuList>
-                  {productosCategorias.map(x => 
-                  <Link to={x.link} style={{textDecoration: 'none'}}>
+                  {productosCategorias.map((x,i) => 
+                  <Link key={i} to={x.link} style={{textDecoration: 'none'}}>
                   <MenuItem 
                   fontFamily="'Patrick Hand', cursive;"
                   fontSize="1.2em"

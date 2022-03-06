@@ -10,19 +10,22 @@ import Productos from './components/productos/Productos'
 import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
 import axios from 'axios'
-
+import { supabase } from './client';
 
 function App() {
   const [isMobile] = useMediaQuery("(max-width: 750px)")
-  const [categorias, setCategorias] = useState([])
-  useEffect(()=>{
-    const getSintes = axios.get('http://localhost:3001/sintetizadores')
-    getSintes.then(response => {
-      console.log(response.data)
-})
+  const [listadoProductos, setListadoProductos] = useState([])
+  const [loading, setLoading] = useState(false);
 
-  })
 
+  useEffect(async ()=>{
+    const { data: productos, error } = await supabase
+    .from('productos')
+    .select('*');
+    setListadoProductos(productos);
+  },[])
+
+  
   return (
     <BrowserRouter>
       <div className="App" style={{maxWidth:'100%'}}>
