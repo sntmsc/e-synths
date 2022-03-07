@@ -1,12 +1,18 @@
-import React from 'react'
+import {useEffect} from 'react'
 import { CardProducto } from '../utils/CardProducto'
 import { Flex, Text } from "@chakra-ui/react"
-import { useSelector } from 'react-redux' 
+import { useDispatch, useSelector } from 'react-redux' 
+import { getDestacados } from '../../reducers/listadoProductos'
 
 const ProductosDestacados = () =>{
 
-  const listadoProductos = useSelector((state) => state.listadoProductos.data);
-  const productosDestacados = listadoProductos.filter(x => x.destacado);
+  const dispatch = useDispatch();
+  useEffect(async ()=>{
+    dispatch(getDestacados());
+  },[dispatch])
+
+  const productosDestacados = useSelector((state) => state.listadoProductos.data);
+
    
 
   return(

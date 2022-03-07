@@ -1,12 +1,33 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from 'axios'
+import { supabase } from "../client";
 
-export const getAll = createAsyncThunk("products/getAll", ()=>{
-   return axios.get('https://yosoohtkackqwpmtagee.supabase.co/rest/v1/productos?select=*', {
-        headers:{
-            'apikey': process.env.REACT_APP_API_KEY}
-        }).then(response =>response.data).catch(error=> {throw Error(error)});
-});
+export const getCategory = createAsyncThunk("products/getCategory", async(categoria)=>{
+    let { data: productos, error } = await supabase
+    .from('productos')
+    .select('*')
+    .ilike('categoria', categoria)
+    if(!error){
+        return productos
+    }
+    else{
+        throw Error(error.message);
+        }
+    }
+);
+
+export const getDestacados = createAsyncThunk("products/getDestacados", async()=>{
+    let { data: productos, error } = await supabase
+    .from('productos')
+    .select('*')
+    .eq('destacado', 'true')
+    if(!error){
+        return productos
+    }
+    else{
+        throw Error(error.message);
+        }
+    }
+);
 
 const initialState = {
     loading: false,
@@ -18,19 +39,34 @@ const listadoProductos = createSlice({
     name: "listadoProductos",
     initialState,
     extraReducers: {
-        [getAll.pending]: (state) => {
+        [getCategory.pending]: (state) => {
+            state.data = [];
             state.loading = true;
             state.error = null;
-          },
-          [getAll.fulfilled]: (state, action) => {
-            state.data = action.payload;
+        },
+        [getCategory.fulfilled]: (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+        state.error = null;
+        },
+        [getCategory.rejected]: (state, action) => {
             state.loading = false;
-            state.error = null;
-          },
-          [getAll.rejected]: (state, action) => {
-              state.loading = false;
-              state.error = action.error.message;
-          },
+            state.error = action.error.message;
+        },
+        [getDestacados.pending]: (state) => {
+        state.data = [];
+        state.loading = true;
+        state.error = null;
+        },
+        [getDestacados.fulfilled]: (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+        state.error = null;
+        },
+        [getDestacados.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
+        },
     }
 })
 

@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import React from 'react'
 import {ChakraProvider,useMediaQuery} from "@chakra-ui/react" 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Navbar from './components/NavBar'
@@ -9,21 +9,10 @@ import Contacto from './components/Contacto'
 import Productos from './components/productos/Productos'
 import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
-import { getAll } from './reducers/listadoProductos';
-import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
   const [isMobile] = useMediaQuery("(max-width: 750px)")
 
-  const dispatch = useDispatch();
-
-  const listadoProductos = useSelector((state) => state.listadoProductos.data);
-  useEffect(async ()=>{
-    dispatch(getAll());
-  },[])
- 
-  const productosCategoria = (categoria) => listadoProductos.filter(x=>x.categoria === categoria)
-  
   return (
     <BrowserRouter>
       <div className="App" style={{maxWidth:'100%'}}>
@@ -33,27 +22,32 @@ function App() {
             <Route path="/" exact>
               <Home/>
             </Route>
-            <Route path="/sintetizadores">
+            <Route
+            key='sintetizadores'
+            path='/sintetizadores'>
               <Productos
-              categoria={'Sintetizadores'}
-              productos={productosCategoria('sintetizador')}/>
+              titulo={'Sintetizadores'}
+              categoria={'sintetizador'}/>
             </Route>
             <Route path="/sintetizadores/:id">
               <Producto/>
             </Route>
-            <Route path="/drums">
+            <Route
+            path='/drums'
+            key='drums'>
               <Productos
-              categoria={'Drum Machines'}
-              productos={productosCategoria('drum')}
-              />
+              titulo={'Drum Machines'}
+              categoria={'drum'}/>
             </Route>
             <Route path="/drums/:id">
               <Producto/>
             </Route>
-            <Route path="/groovebox">
+            <Route
+            path='/groovebox'
+            key='groovebox'>
               <Productos
-              categoria={'Samplers & Groovebox'}
-              productos={productosCategoria('groovebox')}/>
+              titulo={'Samplers & Groovebox'}
+              categoria={'groovebox'}/>
             </Route>
             <Route path="/groovebox/:id">
               <Producto/>
