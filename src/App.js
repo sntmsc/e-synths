@@ -9,22 +9,22 @@ import Contacto from './components/Contacto'
 import Productos from './components/productos/Productos'
 import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
-import axios from 'axios'
-import { supabase } from './client';
+import { getAll } from './reducers/listadoProductos';
+import { useDispatch, useSelector } from 'react-redux';
 
 function App() {
   const [isMobile] = useMediaQuery("(max-width: 750px)")
-  const [listadoProductos, setListadoProductos] = useState([])
-  const [loading, setLoading] = useState(false);
 
+  const dispatch = useDispatch();
+
+
+  const listadoProductos = useSelector((state) => state.listadoProductos);
 
   useEffect(async ()=>{
-    const { data: productos, error } = await supabase
-    .from('productos')
-    .select('*');
-    setListadoProductos(productos);
+    dispatch(getAll());
   },[])
-
+  
+  console.log(listadoProductos);
   
   return (
     <BrowserRouter>

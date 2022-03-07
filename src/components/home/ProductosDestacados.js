@@ -1,58 +1,8 @@
 import React from 'react'
+import { CardProducto } from '../utils/CardProducto'
 import {Flex,
-        Box,
-        Image,
         Text
 } from "@chakra-ui/react" 
-
-
-
-export const ProductoIndividual = ({nombre,precio,img}) => {
-
-    return(
-        <Box 
-        bg="white" 
-        w={{base:"13em",md:"11em"}} 
-        h="15em" 
-        mx="2em"  
-        mb="3em"
-        boxShadow="lg"
-        _hover={{boxShadow:"dark-lg", cursor:"pointer"}}>
-            <Box
-            w="100%"
-            h="65%"
-            borderBottom="1px solid"
-            borderColor="gray.500"
-            pb="2em"
-            >
-                <Image src={img} objectFit="contain" boxSize="100%"/>
-            </Box>
-            <Flex
-            w="100%"
-            h="35%"
-            direction="column"
-            justify="center"
-            alignItems="center"
-            p="1em"
-            >
-                <Text
-                my=".5em"
-                fontWeight="extrabold"
-                fontSize="1.2em">
-                    {nombre} 
-                </Text>
-                <Text
-                fontWeight="bold"
-                color="gray.600">
-                    U$S {precio} 
-                </Text>
-
-            </Flex>
-
-        </Box>
-    )
-}
-
 
 const ProductosDestacados = () =>{
 
@@ -83,15 +33,15 @@ const ProductosDestacados = () =>{
         justify="center"
         alignItems="center"
         wrap="wrap">
-            <ProductoIndividual 
+            <CardProducto 
             nombre={'Cobalt 8'} 
             precio={'1500'} 
             img={'./imgs/productos/cobalt.jpg'}/>
-            <ProductoIndividual 
+            <CardProducto
             nombre={'Juno 60'} 
             precio={'2500'} 
             img={'./imgs/productos/juno.jpg'}/>
-            <ProductoIndividual 
+            <CardProducto
             nombre={'Microkorg'} 
             precio={'350'} 
             img={'./imgs/productos/mk.jpg'}/>

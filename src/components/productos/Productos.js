@@ -1,12 +1,8 @@
 import React from 'react'
 import {Flex, Text, HStack, Checkbox} from "@chakra-ui/react" 
-import {ProductoIndividual} from '../home/ProductosDestacados'
-import instrumentsDB from '../../instrumentsDB'
+import { CardProducto } from '../utils/CardProducto'
 
-const Productos = ({prod}) =>{
-
-
-   
+const Productos = ({prod,instrumentsDB}) =>{
 
     return(
       <Flex 
@@ -58,7 +54,7 @@ const Productos = ({prod}) =>{
           alignItems="center"
           wrap="wrap">
             {instrumentsDB.map(x=>
-               <ProductoIndividual
+               <CardProducto
                key={x.id}
                nombre={x.producto}
                precio={x.precio}
