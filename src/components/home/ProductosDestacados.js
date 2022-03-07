@@ -1,12 +1,12 @@
 import React from 'react'
 import { CardProducto } from '../utils/CardProducto'
-import {Flex,
-        Text
-} from "@chakra-ui/react" 
+import { Flex, Text } from "@chakra-ui/react"
+import { useSelector } from 'react-redux' 
 
 const ProductosDestacados = () =>{
 
-
+  const listadoProductos = useSelector((state) => state.listadoProductos.data);
+  const productosDestacados = listadoProductos.filter(x => x.destacado);
    
 
   return(
@@ -33,18 +33,14 @@ const ProductosDestacados = () =>{
         justify="center"
         alignItems="center"
         wrap="wrap">
+          {productosDestacados.map((x,i)=>
             <CardProducto 
-            nombre={'Cobalt 8'} 
-            precio={'1500'} 
-            img={'./imgs/productos/cobalt.jpg'}/>
-            <CardProducto
-            nombre={'Juno 60'} 
-            precio={'2500'} 
-            img={'./imgs/productos/juno.jpg'}/>
-            <CardProducto
-            nombre={'Microkorg'} 
-            precio={'350'} 
-            img={'./imgs/productos/mk.jpg'}/>
+            key={i}
+            nombre={x.producto} 
+            precio={x.precio} 
+            img={x.img}
+            producto={x}/>
+            )}
         </Flex>
     </Flex>
   )

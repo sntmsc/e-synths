@@ -2,7 +2,7 @@ import React from 'react'
 import {Flex, Text, HStack, Checkbox} from "@chakra-ui/react" 
 import { CardProducto } from '../utils/CardProducto'
 
-const Productos = ({prod,instrumentsDB}) =>{
+const Productos = ({categoria,productos}) =>{
 
     return(
       <Flex 
@@ -29,7 +29,7 @@ const Productos = ({prod,instrumentsDB}) =>{
           fontWeight="extrabold"
           fontSize="2xl"
           as='u'
-          >{prod}</Text>
+          >{categoria}</Text>
       </Flex>
       <Flex
       w='100%'
@@ -53,7 +53,7 @@ const Productos = ({prod,instrumentsDB}) =>{
           justify="center"
           alignItems="center"
           wrap="wrap">
-            {instrumentsDB.map(x=>
+            {productos.map(x=>
                <CardProducto
                key={x.id}
                nombre={x.producto}

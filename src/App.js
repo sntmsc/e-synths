@@ -17,14 +17,12 @@ function App() {
 
   const dispatch = useDispatch();
 
-
-  const listadoProductos = useSelector((state) => state.listadoProductos);
-
+  const listadoProductos = useSelector((state) => state.listadoProductos.data);
   useEffect(async ()=>{
     dispatch(getAll());
   },[])
-  
-  console.log(listadoProductos);
+ 
+  const productosCategoria = (categoria) => listadoProductos.filter(x=>x.categoria === categoria)
   
   return (
     <BrowserRouter>
@@ -36,19 +34,26 @@ function App() {
               <Home/>
             </Route>
             <Route path="/sintetizadores">
-              <Productos prod={'Sintetizadores'}/>
+              <Productos
+              categoria={'Sintetizadores'}
+              productos={productosCategoria('sintetizador')}/>
             </Route>
             <Route path="/sintetizadores/:id">
               <Producto/>
             </Route>
             <Route path="/drums">
-              <Productos prod={'Drum Machines'}/>
+              <Productos
+              categoria={'Drum Machines'}
+              productos={productosCategoria('drum')}
+              />
             </Route>
             <Route path="/drums/:id">
               <Producto/>
             </Route>
             <Route path="/groovebox">
-              <Productos prod={'Samplers & Groovebox'}/>
+              <Productos
+              categoria={'Samplers & Groovebox'}
+              productos={productosCategoria('groovebox')}/>
             </Route>
             <Route path="/groovebox/:id">
               <Producto/>

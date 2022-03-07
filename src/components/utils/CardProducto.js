@@ -9,14 +9,12 @@ import {Flex,
 
 
 
-export const CardProducto = ({nombre,precio,img,id, listadoProductos}) => {
+export const CardProducto = ({nombre,precio,img, producto}) => {
     const dispatch = useDispatch();
-
-    const productoFiltrado = listadoProductos.filter(x => x.id === id);
 
     const handleClick = () =>{
         dispatch(selectProduct(
-            productoFiltrado[0]
+            producto
         ))
     }
     return(
