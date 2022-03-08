@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { selectProduct } from '../../reducers/productoSeleccionado'
 import {Flex,
         Box,
@@ -10,12 +11,15 @@ import {Flex,
 
 
 export const CardProducto = ({nombre,precio,img, producto}) => {
-    const dispatch = useDispatch();
 
+    const dispatch = useDispatch();
+    const history = useHistory();
+    const {categoria, id} = producto;
     const handleClick = () =>{
         dispatch(selectProduct(
             producto
         ))
+        history.push(`/${categoria}/${id}`)
     }
     return(
         <Box 

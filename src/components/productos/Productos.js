@@ -65,7 +65,8 @@ const Productos = ({categoria, titulo}) =>{
                key={x.id}
                nombre={x.producto}
                precio={x.precio}
-               img={x.img}/> )}
+               img={x.img}
+               producto={x}/> )}
           </Flex>
       </Flex>
     )

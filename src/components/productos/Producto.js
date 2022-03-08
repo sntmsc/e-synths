@@ -1,7 +1,10 @@
 import React from 'react'
 import { Flex, Text, Image} from "@chakra-ui/react" 
+import { useSelector } from 'react-redux';
 
-const Producto = ({producto, img, desc})=> {
+const Producto = () => {
+    const infoProducto = useSelector((state) => state.listadoProductos.data);
+    const {img, descripcion, producto} = infoProducto;
     return(
 
         <Flex
@@ -17,7 +20,7 @@ const Producto = ({producto, img, desc})=> {
                 {producto}
             </Text>
             <Text>
-                {desc}
+                {descripcion}
             </Text>
         </Flex>
     )

@@ -27,9 +27,10 @@ function App() {
             path='/sintetizadores'>
               <Productos
               titulo={'Sintetizadores'}
-              categoria={'sintetizador'}/>
+              categoria={'sintetizadores'}/>
             </Route>
-            <Route path="/sintetizadores/:id">
+            <Route
+            path="/sintetizadores/:id">
               <Producto/>
             </Route>
             <Route
@@ -37,7 +38,7 @@ function App() {
             key='drums'>
               <Productos
               titulo={'Drum Machines'}
-              categoria={'drum'}/>
+              categoria={'drums'}/>
             </Route>
             <Route path="/drums/:id">
               <Producto/>
