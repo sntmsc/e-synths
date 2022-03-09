@@ -24,7 +24,7 @@ function App() {
             </Route>
             <Route
             key='sintetizadores'
-            path='/sintetizadores'>
+            path='/sintetizadores' exact>
               <Productos
               titulo={'Sintetizadores'}
               categoria={'sintetizadores'}/>
@@ -34,7 +34,7 @@ function App() {
               <Producto/>
             </Route>
             <Route
-            path='/drums'
+            path='/drums' exact
             key='drums'>
               <Productos
               titulo={'Drum Machines'}
@@ -44,7 +44,7 @@ function App() {
               <Producto/>
             </Route>
             <Route
-            path='/groovebox'
+            path='/groovebox' exact
             key='groovebox'>
               <Productos
               titulo={'Samplers & Groovebox'}

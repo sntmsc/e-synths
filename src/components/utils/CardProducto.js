@@ -15,11 +15,10 @@ export const CardProducto = ({nombre,precio,img, producto}) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const {categoria, id} = producto;
+
     const handleClick = () =>{
-        dispatch(selectProduct(
-            producto
-        ))
-        history.push(`/${categoria}/${id}`)
+        dispatch(selectProduct(producto));
+        history.push(`/${categoria}/${id}`);
     }
     return(
         <Box 
