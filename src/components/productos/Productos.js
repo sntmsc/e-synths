@@ -1,17 +1,27 @@
-import { useEffect } from 'react'
-import {Flex, Text, HStack, Checkbox, Spinner} from "@chakra-ui/react" 
+import { useEffect, useState } from 'react'
+import {Flex, Text, HStack, Checkbox, Spinner} from "@chakra-ui/react"
 import { CardProducto } from '../utils/CardProducto'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCategory } from '../../reducers/listadoProductos'
 
 const Productos = ({categoria, titulo}) =>{
-
     const dispatch = useDispatch();
     const productos = useSelector((state) => state.listadoProductos.data);
     const isLoading = useSelector((state) => state.listadoProductos.loading);
+    const checkInitObject = (arr) => arr.map(x =>{ return {nombre:x,boolean:true}})
+    const tags = () => categoria === 'sintetizadores' ? 
+                        checkInitObject(['monofónico','polifónico','vintage']) :
+                        categoria === 'drums' ? 
+                        checkInitObject(['analógica','digital','vintage']) :
+                        categoria === 'groovebox' ?
+                        checkInitObject(['sampler','sequencer','all-in-one']): []; 
+
+    const [filters, setFilters] = useState(tags());
     useEffect(async ()=>{
       dispatch(getCategory(categoria));
     },[dispatch])
+
+    console.log(filters)
     return(
       <Flex 
       w="100%"
@@ -44,15 +54,18 @@ const Productos = ({categoria, titulo}) =>{
       justify='center'
       mb='2em'>
             <HStack spacing={{base:'5',md:'10'}} direction="row" wrap='wrap' justify='center'>
-                <Checkbox size="lg" colorScheme="orange" defaultIsChecked >
-                    Vintage
+              {tags().map((x,i) => 
+                <Checkbox
+                key={i}
+                size="lg"
+                colorScheme="orange"
+                defaultIsChecked
+                isChecked={filters[i].boolean}
+                onChange={(e)=> setFilters(filters.map((filter,index) =>
+                 index === i ? {...filter,boolean: e.target.checked} : filter))}>
+                    {x.nombre}
                 </Checkbox>
-                <Checkbox size="lg" colorScheme="orange" defaultIsChecked >
-                    Polifónicos
-                </Checkbox>
-                <Checkbox size="lg" colorScheme="orange" defaultIsChecked >
-                    Monofónicos
-                </Checkbox>
+                )}
             </HStack>
         </Flex>
         <Flex
