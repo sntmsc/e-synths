@@ -17,7 +17,7 @@ const Nosotros = () =>{
           <Image 
           boxSize={{base:'20em',lg:'40em',xl:'50em' }}
           objectFit='cover' 
-          src='./imgs/nosotros1.jpg' 
+          src='/imgs/nosotros1.jpg' 
           alt='foto de nuestro espacio con sintetizadores'
           border='3px solid'
           borderRadius='5%'/>

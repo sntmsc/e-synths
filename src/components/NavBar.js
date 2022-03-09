@@ -29,7 +29,7 @@ const Navbar = ({isMobile}) => {
           <Image
           boxSize={{base:"2.5em",lg:"3.5em"}}
           objectFit="cover"
-          src="./icons/logo-principal.png"
+          src="/icons/logo-principal.png"
           alt="Logo principal"
           ml="1em" 
           />
@@ -193,7 +193,7 @@ const Navbar = ({isMobile}) => {
         <Session descripcion={'Contactanos'} link={'/contacto'}/>
         <Buscador/>
         <Image
-        src='./icons/carrito.png'
+        src='/icons/carrito.png'
         alt='carrito de compras' 
         objectFit='cover'
         boxSize='2em'
@@ -206,7 +206,7 @@ const Navbar = ({isMobile}) => {
 
           <MenuMobile/>
           <Image
-              src='./icons/carrito.png'
+              src='/icons/carrito.png'
               alt='carrito de compras' 
               objectFit='cover'
               boxSize='2em'

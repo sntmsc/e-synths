@@ -17,7 +17,7 @@ const Contacto = () =>{
         mx={{base:'.5em',lg:'1em', xl:'2em'}} 
         _hover={{bg:'gray.400', cursor:"pointer"}}>
             <Image 
-            src={icon} 
+            src={`/${icon}`}
             alt= {alts}
             boxSize='8em'
             objectFit='cover'/>
@@ -49,7 +49,7 @@ const Contacto = () =>{
         boxSize={{base:'20em',lg:'25em',xl:'30em' }}
         objectFit='cover'
         border='1px solid black'
-        src='./imgs/llamar.jpg'
+        src='/imgs/llamar.jpg'
         alt='imagen de referencia para llamarnos por telefono' />
       </Stack>
         <Flex

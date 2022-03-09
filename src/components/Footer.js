@@ -32,17 +32,17 @@ const Footer = () =>{
           direction='row'
           mb='1em'>
             <Image
-            src='./icons/whatsapp.png'
+            src='/icons/whatsapp.png'
             alt='whatsapp'
             objectFit='cover'
             boxSize='2em'/>
             <Image
-            src='./icons/facebook.png'
+            src='/icons/facebook.png'
             alt='facebook'
             objectFit='cover'
             boxSize='2em'/>
             <Image
-            src='./icons/instagram-logo.png'
+            src='/icons/instagram-logo.png'
             alt='instagram'
             objectFit='cover'
             boxSize='2em'/>

@@ -14,9 +14,10 @@ const Producto = () => {
         align='center'
         direction='column'>
             <Image
-            src={img}
+            src={`/${img}`}
             alt={producto}
-            boxSize='5em'/>
+            h='20em'
+            w='25em'/>
             <Text
             fontSize='2em'
             mb='1em'
