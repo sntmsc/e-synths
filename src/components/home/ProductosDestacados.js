@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import { CardProducto } from '../utils/CardProducto'
-import { Flex, Text } from "@chakra-ui/react"
+import { Flex, Text, Spinner} from "@chakra-ui/react"
 import { useDispatch, useSelector } from 'react-redux' 
 import { getDestacados } from '../../reducers/listadoProductos'
 
@@ -12,6 +12,7 @@ const ProductosDestacados = () =>{
   },[dispatch])
 
   const productosDestacados = useSelector((state) => state.listadoProductos.data);
+  const isLoading = useSelector((state) => state.listadoProductos.loading);
 
    
 
@@ -39,7 +40,11 @@ const ProductosDestacados = () =>{
         justify="center"
         alignItems="center"
         wrap="wrap">
-          {productosDestacados.map((x,i)=>
+          {isLoading ? 
+          <Spinner
+          size='xl'
+          mb='2em'/> : 
+          productosDestacados.map((x,i)=>
             <CardProducto 
             key={i}
             nombre={x.producto} 

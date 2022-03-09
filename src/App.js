@@ -1,5 +1,5 @@
 import React from 'react'
-import {ChakraProvider,useMediaQuery} from "@chakra-ui/react" 
+import {ChakraProvider,useMediaQuery, Flex} from "@chakra-ui/react" 
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Navbar from './components/NavBar'
 import OpcionesCompras from "./components/home/OpcionesCompras"
@@ -60,8 +60,13 @@ function App() {
               <Contacto/>
             </Route>
           </Switch>
-          <OpcionesCompras />
-          <Footer/>
+          <Flex
+          position='relative'
+          bottom='0'
+          direction='column'>
+            <OpcionesCompras />
+            <Footer/>
+          </Flex>
         </ChakraProvider>
       </div>
     </BrowserRouter>

@@ -5,8 +5,7 @@ import { selectProduct } from '../../reducers/productoSeleccionado'
 import {Flex,
         Box,
         Image,
-        Text
-} from "@chakra-ui/react" 
+        Text} from "@chakra-ui/react" 
 
 
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import {Flex, Text, HStack, Checkbox} from "@chakra-ui/react" 
+import {Flex, Text, HStack, Checkbox, Spinner} from "@chakra-ui/react" 
 import { CardProducto } from '../utils/CardProducto'
 import { useSelector, useDispatch } from 'react-redux'
 import { getCategory } from '../../reducers/listadoProductos'
@@ -8,6 +8,7 @@ const Productos = ({categoria, titulo}) =>{
 
     const dispatch = useDispatch();
     const productos = useSelector((state) => state.listadoProductos.data);
+    const isLoading = useSelector((state) => state.listadoProductos.loading);
     useEffect(async ()=>{
       dispatch(getCategory(categoria));
     },[dispatch])
@@ -60,7 +61,11 @@ const Productos = ({categoria, titulo}) =>{
           justify="center"
           alignItems="center"
           wrap="wrap">
-            {productos.map(x=>
+            {isLoading ? 
+            <Spinner
+            size='xl'
+            mb='2em'/> :  
+            productos.map(x=>
                <CardProducto
                key={x.id}
                nombre={x.producto}

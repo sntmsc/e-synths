@@ -8,7 +8,8 @@ const initialState = {
     id: 0,
     img: "",
     precio: 0,
-    producto: ""
+    producto: "",
+    tag:""
 }
 const productoSeleccionado = createSlice({
     name: "productoSeleccionado",
