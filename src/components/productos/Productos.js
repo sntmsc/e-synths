@@ -8,18 +8,27 @@ const Productos = ({categoria, titulo}) =>{
     const dispatch = useDispatch();
     const productos = useSelector((state) => state.listadoProductos.data);
     const isLoading = useSelector((state) => state.listadoProductos.loading);
-    const checkInitObject = (arr) => arr.map(x =>{ return {nombre:x,boolean:true}})
+
     const tags = () => categoria === 'sintetizadores' ? 
-                        checkInitObject(['monofónico','polifónico','vintage']) :
+                        ['monofónico','polifónico','vintage'] :
                         categoria === 'drums' ? 
-                        checkInitObject(['analógica','digital','vintage']) :
+                        ['analógica','digital','vintage'] :
                         categoria === 'groovebox' ?
-                        checkInitObject(['sampler','sequencer','all-in-one']): []; 
+                        ['sampler','sequencer','all-in-one']: []; 
 
-    const [filters, setFilters] = useState(tags());
+    const [subcategorias, setSubcategorias] = useState(tags());
 
-    const subcategorias = filters.filter(x => x.boolean).map(x => x.nombre);
+  const handleCheck = (event) =>{
+    const filtroSubcategorias = () => event.target.checked ? 
+                    subcategorias.concat(event.target.value) :
+                    subcategorias.filter(x=> x !== event.target.value)
+
+    setSubcategorias(filtroSubcategorias());
+    dispatch(getSubcategories(filtroSubcategorias()));
+  }
+
     console.log(subcategorias)
+
     useEffect(async ()=>{
       dispatch(getCategory(categoria));
     },[dispatch])
@@ -63,12 +72,9 @@ const Productos = ({categoria, titulo}) =>{
                 size="lg"
                 colorScheme="orange"
                 defaultIsChecked
-                isChecked={filters[i].boolean}
-                onChange={(e)=>{
-                  setFilters(filters.map((filter,index) =>
-                 index === i ? {...filter,boolean: e.target.checked} : filter));
-                 dispatch(getSubcategories(subcategorias))}}>
-                    {x.nombre}
+                value={x}
+                onChange={handleCheck}>
+                    {x}
                 </Checkbox>
                 )}
             </HStack>
