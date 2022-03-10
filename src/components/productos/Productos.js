@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import {Flex, Text, HStack, Checkbox, Spinner} from "@chakra-ui/react"
 import { CardProducto } from '../utils/CardProducto'
 import { useSelector, useDispatch } from 'react-redux'
-import { getCategory } from '../../reducers/listadoProductos'
+import { getCategory, getSubcategories } from '../../reducers/listadoProductos'
 
 const Productos = ({categoria, titulo}) =>{
     const dispatch = useDispatch();
@@ -17,11 +17,14 @@ const Productos = ({categoria, titulo}) =>{
                         checkInitObject(['sampler','sequencer','all-in-one']): []; 
 
     const [filters, setFilters] = useState(tags());
+
+    const subcategorias = filters.filter(x => x.boolean).map(x => x.nombre);
+    console.log(subcategorias)
     useEffect(async ()=>{
       dispatch(getCategory(categoria));
     },[dispatch])
 
-    console.log(filters)
+    
     return(
       <Flex 
       w="100%"
@@ -61,8 +64,10 @@ const Productos = ({categoria, titulo}) =>{
                 colorScheme="orange"
                 defaultIsChecked
                 isChecked={filters[i].boolean}
-                onChange={(e)=> setFilters(filters.map((filter,index) =>
-                 index === i ? {...filter,boolean: e.target.checked} : filter))}>
+                onChange={(e)=>{
+                  setFilters(filters.map((filter,index) =>
+                 index === i ? {...filter,boolean: e.target.checked} : filter));
+                 dispatch(getSubcategories(subcategorias))}}>
                     {x.nombre}
                 </Checkbox>
                 )}
@@ -70,7 +75,7 @@ const Productos = ({categoria, titulo}) =>{
         </Flex>
         <Flex
           w="100%"
-          
+
           justify="center"
           alignItems="center"
           wrap="wrap">

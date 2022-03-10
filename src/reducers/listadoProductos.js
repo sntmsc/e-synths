@@ -15,6 +15,20 @@ export const getCategory = createAsyncThunk("products/getCategory", async(catego
     }
 );
 
+export const getSubcategories = createAsyncThunk("products/getSubcategories", async(subcategorias)=>{
+    let { data: productos, error } = await supabase
+    .from('productos')
+    .select('*')
+    .in('tag', subcategorias)
+    if(!error){
+        return productos
+    }
+    else{
+        throw Error(error.message);
+        }
+    }
+);
+
 export const getDestacados = createAsyncThunk("products/getDestacados", async()=>{
     let { data: productos, error } = await supabase
     .from('productos')
@@ -28,6 +42,7 @@ export const getDestacados = createAsyncThunk("products/getDestacados", async()=
         }
     }
 );
+
 
 const initialState = {
     loading: false,
@@ -50,6 +65,20 @@ const listadoProductos = createSlice({
         state.error = null;
         },
         [getCategory.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
+        },
+        [getSubcategories.pending]: (state) => {
+            state.data = [];
+            state.loading = true;
+            state.error = null;
+        },
+        [getSubcategories.fulfilled]: (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+        state.error = null;
+        },
+        [getSubcategories.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         },
