@@ -24,7 +24,9 @@ const Productos = ({categoria, titulo}) =>{
                     subcategorias.filter(x=> x !== event.target.value)
 
     setSubcategorias(filtroSubcategorias());
-    dispatch(getSubcategories(filtroSubcategorias()));
+    
+    const arr = [categoria, filtroSubcategorias()]
+    dispatch(getSubcategories(arr));
   }
 
     console.log(subcategorias)

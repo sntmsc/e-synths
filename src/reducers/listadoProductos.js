@@ -15,11 +15,15 @@ export const getCategory = createAsyncThunk("products/getCategory", async(catego
     }
 );
 
-export const getSubcategories = createAsyncThunk("products/getSubcategories", async(subcategorias)=>{
+export const getSubcategories = createAsyncThunk("products/getSubcategories", async(array)=>{
+    const [categoria, subcategorias] = array;
     let { data: productos, error } = await supabase
     .from('productos')
     .select('*')
-    .in('tag', subcategorias)
+    .ilike('categoria', categoria)
+    .textSearch('tag', `${subcategorias.join(' or ')}`, {
+        type: 'websearch',
+    })
     if(!error){
         return productos
     }
