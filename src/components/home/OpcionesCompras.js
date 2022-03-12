@@ -30,18 +30,18 @@ const OpcionesCompras = () => {
       <Flex w="100%" justifyContent="center" my="2em" top="40em">
         <Flex w="95%" pt="1em" pb={{md:"4em",lg:'2em'}} bg={{base:"white",md:"orange.200"}} borderTop={{base:"1px solid black",md:"none"}} wrap="wrap">
           <Item 
-          icon={'./icons/camion.png'}
+          icon={'/icons/camion.png'}
           primary={'Enviamos tu compra'} 
           secondary={'Entregas a todo el país'}
           />
           
           <Item 
-          icon={'./icons/tarjeta-de-credito.png'}
+          icon={'/icons/tarjeta-de-credito.png'}
           primary={'Pagá como quieras'} 
           secondary={'Tarjetas, efectivo y transferencia bancaria'}
           />
           <Item 
-          icon={'./icons/whatsapp.png'}
+          icon={'/icons/whatsapp.png'}
           primary={'Elegí tu producto online'} 
           secondary={'¡Nosotros te ayudamos con la decisión!'}
           />

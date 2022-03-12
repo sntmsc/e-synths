@@ -65,7 +65,7 @@ function App() {
           bottom='0'
           direction='column'>
             <OpcionesCompras />
-            <Footer/>
+            
           </Flex>
         </ChakraProvider>
       </div>

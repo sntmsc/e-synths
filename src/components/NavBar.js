@@ -1,5 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getBusqueda } from '../reducers/listadoProductos'
+import { deleteSub } from '../reducers/homeProductosSubtitulo'
 
 import {Flex,
       Stack,
@@ -10,7 +13,7 @@ import {Flex,
       MenuList,
       MenuItem,
       IconButton,
-      Input
+      Input,
  } from "@chakra-ui/react" 
  import {HamburgerIcon, SearchIcon} from "@chakra-ui/icons" 
 
@@ -45,19 +48,31 @@ const Navbar = ({isMobile}) => {
       )
     }
       const Buscador = () =>{
+        const dispatch = useDispatch();
+          const handleSearch = (e) =>{
+            e.preventDefault();
+            dispatch(getBusqueda(e.target.text.value));
+            dispatch(deleteSub())
+            e.target.text.value = "";
+          }
         return(
+          
           <Flex 
           m={{base:"1em",md:"1.5em",lg:"2em"}}
           w={{base:"85%",md:"40%"}}
           justify="center" 
           position="relative" 
-          left='1%'>
-          <Input 
-          mr=".5em"
-          boxShadow="md"
-          maxW="25em"/>
-          <IconButton aria-label="buscador" icon={<SearchIcon/>}/>
+          left={{base:"1%",lg:'5%', xl:'10%', '2xl':'18%'}}>
+            <form onSubmit={handleSearch} style={{display: 'flex'}}>
+              <Input
+              mr=".5em"
+              name="text"
+              boxShadow="md"
+              maxW="25em"/>
+              <IconButton type="submit" aria-label="buscador" icon={<SearchIcon/>}/>
+            </form>
           </Flex>
+         
         )
       }
   
@@ -70,7 +85,7 @@ const Navbar = ({isMobile}) => {
             categoria:'Samplers/Groovebox',
             link:'/groovebox'}]
         return(
-          <Stack spacing={5} ml={{md:'8',lg:'5'}}>
+          <Stack spacing={5} ml={{md:'8',lg:'5'}} position='relative' right='20%'>
           {descripcion!=='Productos' && 
                   <Link to={link} style={{textDecoration: 'none', margin:'0'}}>
                     <Flex 
@@ -196,6 +211,8 @@ const Navbar = ({isMobile}) => {
         src='/icons/carrito.png'
         alt='carrito de compras' 
         objectFit='cover'
+        position='relative'
+        left={{xl:'1%','2xl':'10%'}}
         boxSize='2em'
         mr='.5em'
         cursor='pointer'/>

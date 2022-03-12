@@ -3,17 +3,18 @@ import { CardProducto } from '../utils/CardProducto'
 import { Flex, Text, Spinner} from "@chakra-ui/react"
 import { useDispatch, useSelector } from 'react-redux' 
 import { getDestacados } from '../../reducers/listadoProductos'
-
+import { initSub } from '../../reducers/homeProductosSubtitulo'
 const ProductosDestacados = () =>{
 
   const dispatch = useDispatch();
   useEffect(async ()=>{
     dispatch(getDestacados());
+    dispatch(initSub())
   },[dispatch])
 
   const productosDestacados = useSelector((state) => state.listadoProductos.data);
   const isLoading = useSelector((state) => state.listadoProductos.loading);
-
+  const subtitulo = useSelector((state) => state.homeProductosSubtitulo.subtitulo);
    
 
   return(
@@ -32,7 +33,7 @@ const ProductosDestacados = () =>{
         fontFamily=" 'Poppins', sans-serif;"
         fontWeight="extrabold"
         fontSize="3xl"
-        >Publicaciones destacadas</Text>
+        >{subtitulo}</Text>
     </Flex>
         <Flex
         w="100%"

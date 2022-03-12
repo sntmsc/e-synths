@@ -47,6 +47,22 @@ export const getDestacados = createAsyncThunk("products/getDestacados", async()=
     }
 );
 
+export const getBusqueda = createAsyncThunk("products/getBusqueda", async(busqueda)=>{
+    let { data: productos, error } = await supabase
+    .from('productos')
+    .select('*')
+    .textSearch('producto', `${busqueda}`, {
+        type: 'websearch',
+    })
+    if(!error){
+        return productos
+    }
+    else{
+        throw Error(error.message);
+        }
+    }
+);
+
 
 const initialState = {
     loading: false,
@@ -97,6 +113,20 @@ const listadoProductos = createSlice({
         state.error = null;
         },
         [getDestacados.rejected]: (state, action) => {
+            state.loading = false;
+            state.error = action.error.message;
+        },
+        [getBusqueda.pending]: (state) => {
+            state.data = [];
+            state.loading = true;
+            state.error = null;
+            },
+        [getBusqueda.fulfilled]: (state, action) => {
+        state.data = action.payload;
+        state.loading = false;
+        state.error = null;
+        },
+        [getBusqueda.rejected]: (state, action) => {
             state.loading = false;
             state.error = action.error.message;
         },
