@@ -9,7 +9,7 @@ import Contacto from './components/Contacto'
 import Productos from './components/productos/Productos'
 import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
-
+import Carrito from './components/Carrito';
 function App() {
   const [isMobile] = useMediaQuery("(max-width: 750px)")
 
@@ -18,6 +18,7 @@ function App() {
       <div className="App" style={{maxWidth:'100%'}}>
         <ChakraProvider>
           <Navbar isMobile={isMobile}/>
+          <Carrito/>
           <Switch>
             <Route path="/" exact>
               <Home/>
@@ -65,7 +66,7 @@ function App() {
           bottom='0'
           direction='column'>
             <OpcionesCompras />
-            
+            <Footer/>
           </Flex>
         </ChakraProvider>
       </div>
