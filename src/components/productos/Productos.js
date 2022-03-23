@@ -29,8 +29,6 @@ const Productos = ({categoria, titulo}) =>{
     dispatch(getSubcategories(arr));
   }
 
-    console.log(subcategorias)
-
     useEffect(async ()=>{
       dispatch(getCategory(categoria));
     },[dispatch])
