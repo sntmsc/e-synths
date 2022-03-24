@@ -6,11 +6,12 @@ const initialState = {
 
 
 const carritoVisible = createSlice({
-    name: "homeProductosSubtitulo",
+    name: "carritoVisible",
     initialState,
     reducers: {
       toggleCarrito: (state,action) => {
-        return !state;
+        const isVisible = state.visible;
+        state.visible = !isVisible; 
       },
     }
 })

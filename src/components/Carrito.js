@@ -1,8 +1,13 @@
 import React from 'react'
 import { Text, Flex, Button, Image } from "@chakra-ui/react" 
 import { useSelector, useDispatch } from 'react-redux'
-
-const ProductoCarrito = () =>{
+import { toggleCarrito } from '../reducers/carrito/carritoVisible'
+import { eliminarProducto } from '../reducers/carrito/productosCarrito'
+const ProductoCarrito = ({precio,producto,img,id}) =>{
+    const dispatch = useDispatch();
+    const handleDelete = () =>{
+        dispatch(eliminarProducto(id))
+    }
     return(
         <Flex
         bg='orange.400'
@@ -12,7 +17,7 @@ const ProductoCarrito = () =>{
         align='center'
         border='1px black solid'>
             <Image
-            src='./imgs/productos/drummachines/808.jpg'
+            src={img}
             w='7em'
             border='1px black solid'/>
             <Text
@@ -20,8 +25,9 @@ const ProductoCarrito = () =>{
             fontFamily=" 'Poppins', sans-serif;"
             fontWeight='600'
             maxW='6em'
-            userSelect='none'>
-                Roland TR-8
+            userSelect='none'
+            textAlign='center'>
+                {producto}
             </Text>
             <Flex
             direction='column'
@@ -33,10 +39,11 @@ const ProductoCarrito = () =>{
                 fontWeight='600'
                 textAlign='center'
                 userSelect='none'>
-                    U$S 3500
+                    U$S {precio}
                 </Text>
                 <Image
-                src='./icons/delete.png'
+                onClick={handleDelete}
+                src='/icons/delete.png'
                 boxSize='1.7em'
                 cursor='pointer'/>
             </Flex>
@@ -44,7 +51,10 @@ const ProductoCarrito = () =>{
     )
 }
 const Carrito = () => {
-    const isVisible = useSelector(state => state.carritoVisible);
+    const isVisible = useSelector(state => state.carritoVisible.visible);
+    const prodCarrito = useSelector((state) => state.productosCarrito.productos);
+
+    const dispatch = useDispatch();
     return(
         <>
             {isVisible && 
@@ -66,15 +76,26 @@ const Carrito = () => {
                 position='absolute'
                 right='.5em'
                 cursor='pointer'
-                userSelect='none'>X</Text>
+                userSelect='none'
+                onClick={()=>dispatch(toggleCarrito())}>X</Text>
                 <Flex
                 position='absolute'
+                direction='column'
                 w='100%'
                 h='20.5em'
                 top='2.5em'
                 overflowY='scroll'
                 overflowX='hidden'>
-                    <ProductoCarrito/>
+                    {prodCarrito.map(x =>
+                    <Flex
+                    key={x.id}>
+                        <ProductoCarrito
+                        id={x.id}
+                        producto={x.producto}
+                        img={x.img}
+                        precio={x.precio}/>
+                    </Flex>
+                    )}
                 </Flex>
                 <Flex
                 direction='column'

@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getBusqueda } from '../reducers/listadoProductos'
 import { deleteSub } from '../reducers/homeProductosSubtitulo'
-
+import { toggleCarrito } from '../reducers/carrito/carritoVisible'
 import {Flex,
       Stack,
       Image,
@@ -19,8 +19,7 @@ import {Flex,
 
 
 const Navbar = ({isMobile}) => {
-   
-
+   const dispatch = useDispatch();
     const Logo = () => { 
       return(
         <Link to={'/'} style={{textDecoration: 'none'}}>
@@ -215,7 +214,8 @@ const Navbar = ({isMobile}) => {
         left={{xl:'1%','2xl':'10%'}}
         boxSize='2em'
         mr='.5em'
-        cursor='pointer'/>
+        cursor='pointer'
+        onClick={()=>dispatch(toggleCarrito())}/>
         </>
         }
         {isMobile && 
@@ -230,7 +230,8 @@ const Navbar = ({isMobile}) => {
               position='relative'
               left={{base:'30%',sm:'45%',md:'50%', lg:'70%',xl:'80%'}}
               m='0'
-              cursor='pointer'/>
+              cursor='pointer'
+              onClick={()=>dispatch(toggleCarrito())}/>
         </>
         }
       </Flex>
