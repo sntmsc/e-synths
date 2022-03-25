@@ -1,24 +1,43 @@
 import React from 'react'
-import { Text, Flex, Button, Image } from "@chakra-ui/react" 
+import { Text, Flex, Grid, Button, Image } from "@chakra-ui/react" 
 import { useSelector, useDispatch } from 'react-redux'
 import { toggleCarrito } from '../reducers/carrito/carritoVisible'
 import { eliminarProducto } from '../reducers/carrito/productosCarrito'
+import { motion, AnimatePresence } from 'framer-motion'
+
 const ProductoCarrito = ({precio,producto,img,id}) =>{
     const dispatch = useDispatch();
     const handleDelete = () =>{
         dispatch(eliminarProducto(id))
     }
     return(
-        <Flex
+        <AnimatePresence>
+        <Grid
+        as={motion.div}
+        key={id}
+        initial={{
+            opacity: 0,
+            scale:0.9}}
+        animate={{
+            opacity: 1,
+                scale:1,
+                transition: {duration: .3 }}}
+            exit={{
+                opacity: 0,
+                right:-100,
+                transition: {duration: .2 }
+            }}
         bg='orange.400'
         w='100%'
         h='7em'
         p='1em'
-        align='center'
+        alignItems='center'
+        gridTemplateColumns='2fr 2fr 1fr'
         border='1px black solid'>
             <Image
             src={img}
             w='7em'
+            h='5em'
             border='1px black solid'/>
             <Text
             mx='1em'
@@ -47,7 +66,8 @@ const ProductoCarrito = ({precio,producto,img,id}) =>{
                 boxSize='1.7em'
                 cursor='pointer'/>
             </Flex>
-        </Flex>
+        </Grid>
+        </AnimatePresence>
     )
 }
 const Carrito = () => {
@@ -65,8 +85,26 @@ const Carrito = () => {
     const dispatch = useDispatch();
     return(
         <>
+        <AnimatePresence>
             {isVisible && 
+
             <Flex
+            as={motion.div}
+            key='cart'
+            initial={{
+                opacity: 0,
+            right:-100}}
+            animate={{
+                opacity: 1,
+                right:0,
+                scale:1,
+                transition: {duration: .3 }}}
+            exit={{
+                opacity: 0,
+                right:-100,
+                transition: {duration: .2 }
+            }}
+
             justify='center'
             w='20em'
             h='30em'
@@ -87,23 +125,39 @@ const Carrito = () => {
                 userSelect='none'
                 onClick={()=>dispatch(toggleCarrito())}>X</Text>
                 <Flex
+                align='center'
                 position='absolute'
                 direction='column'
                 w='100%'
                 h='20.5em'
                 top='2.5em'
-                overflowY='scroll'
-                overflowX='hidden'>
-                    {prodCarrito.map(x =>
+                overflowY={prodCarrito.length >= 3 ? 'scroll' : 'hidden'}>
+                    {prodCarrito.length > 0 ? 
+                    prodCarrito.map(x =>
                     <Flex
-                    key={x.id}>
+                    key={x.id}
+                    w='100%'>
                         <ProductoCarrito
                         id={x.id}
                         producto={x.producto}
                         img={x.img}
                         precio={x.precio}/>
-                    </Flex>
-                    )}
+                    </Flex>)                : 
+                    <Flex
+                    w='100%'
+                    justify='center'
+                    align='center'
+                    p='1em'
+                    bg='orange.300'
+                    borderRadius='2px'>
+                        <Text
+                        textAlign='center'
+                        fontFamily="'Patrick Hand', cursive;"
+                        fontSize='1.3em'
+                        fontStyle='italic'>
+                            El carrito de compras se encuentra vacío
+                        </Text>
+                    </Flex>}
                 </Flex>
                 <Flex
                 direction='column'
@@ -125,6 +179,7 @@ const Carrito = () => {
                 </Flex>
             </Flex>
             }
+        </AnimatePresence>
         </>
     )
 }

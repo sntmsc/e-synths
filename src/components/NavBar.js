@@ -94,7 +94,7 @@ const Navbar = ({isMobile}) => {
                     align="center"
                     >
                       <Text
-                      fontSize={{md:"1em",lg:"1.5em", xl:'2em'}}
+                      fontSize={{md:"1em",lg:"1.5em", xl:'1.5em'}}
                       fontFamily="'Patrick Hand', cursive;"
                       _hover={{cursor:"pointer",color:'gray.600'}}>
                         {descripcion}
@@ -113,7 +113,7 @@ const Navbar = ({isMobile}) => {
                   align="center"
                   _hover={{cursor:"pointer",color:'gray.600'}}>
                       <Text
-                        fontSize={{md:"1em",lg:"1.5em", xl:'2em'}}
+                        fontSize={{md:"1em",lg:"1.5em", xl:'1.5em'}}
                         fontFamily="'Patrick Hand', cursive;"
                         >
                           {descripcion}
@@ -125,7 +125,7 @@ const Navbar = ({isMobile}) => {
                   <Link key={i} to={x.link} style={{textDecoration: 'none'}}>
                   <MenuItem 
                   fontFamily="'Patrick Hand', cursive;"
-                  fontSize="1.2em"
+                  fontSize="1em"
                   h="4em">{x.categoria}</MenuItem>
                   </Link>
                   )}
