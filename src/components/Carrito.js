@@ -54,6 +54,14 @@ const Carrito = () => {
     const isVisible = useSelector(state => state.carritoVisible.visible);
     const prodCarrito = useSelector((state) => state.productosCarrito.productos);
 
+    const precioTotal = (productos) => {
+        if(productos.length > 0){
+        return productos.reduce((acumulador, producto) => acumulador + parseInt(producto.precio),0);
+        }
+        else{
+            return 0;
+        }
+    }
     const dispatch = useDispatch();
     return(
         <>
@@ -106,7 +114,7 @@ const Carrito = () => {
                     <Text
                     mb='.5em'
                     fontSize='1.3em'>
-                        Total: U$S 100 
+                        Total: U$S {precioTotal(prodCarrito)}
                     </Text>
                     <Button
                     colorScheme='black'
