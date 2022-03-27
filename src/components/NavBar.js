@@ -95,7 +95,7 @@ const Navbar = ({isMobile}) => {
                     >
                       <Text
                       fontSize={{md:"1em",lg:"1.5em", xl:'1.5em'}}
-                      fontFamily="'Patrick Hand', cursive;"
+                      fontFamily="'Hind Siliguri', sans-serif"
                       _hover={{cursor:"pointer",color:'gray.600'}}>
                         {descripcion}
                       </Text>
@@ -114,7 +114,7 @@ const Navbar = ({isMobile}) => {
                   _hover={{cursor:"pointer",color:'gray.600'}}>
                       <Text
                         fontSize={{md:"1em",lg:"1.5em", xl:'1.5em'}}
-                        fontFamily="'Patrick Hand', cursive;"
+                        fontFamily="'Hind Siliguri', sans-serif"
                         >
                           {descripcion}
                       </Text>
@@ -124,7 +124,7 @@ const Navbar = ({isMobile}) => {
                   {productosCategorias.map((x,i) => 
                   <Link key={i} to={x.link} style={{textDecoration: 'none'}}>
                   <MenuItem 
-                  fontFamily="'Patrick Hand', cursive;"
+                  fontFamily="'Hind Siliguri', sans-serif"
                   fontSize="1em"
                   h="4em">{x.categoria}</MenuItem>
                   </Link>

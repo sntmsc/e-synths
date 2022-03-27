@@ -5,28 +5,13 @@ import { toggleCarrito } from '../reducers/carrito/carritoVisible'
 import { eliminarProducto } from '../reducers/carrito/productosCarrito'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const ProductoCarrito = ({precio,producto,img,id}) =>{
+const ProductoCarrito = ({precio,producto,img, id}) =>{
     const dispatch = useDispatch();
     const handleDelete = () =>{
         dispatch(eliminarProducto(id))
     }
     return(
-        <AnimatePresence>
         <Grid
-        as={motion.div}
-        key={id}
-        initial={{
-            opacity: 0,
-            scale:0.9}}
-        animate={{
-            opacity: 1,
-                scale:1,
-                transition: {duration: .3 }}}
-            exit={{
-                opacity: 0,
-                right:-100,
-                transition: {duration: .2 }
-            }}
         bg='orange.400'
         w='100%'
         h='7em'
@@ -67,7 +52,6 @@ const ProductoCarrito = ({precio,producto,img,id}) =>{
                 cursor='pointer'/>
             </Flex>
         </Grid>
-        </AnimatePresence>
     )
 }
 const Carrito = () => {
@@ -132,17 +116,32 @@ const Carrito = () => {
                 h='20.5em'
                 top='2.5em'
                 overflowY={prodCarrito.length >= 3 ? 'scroll' : 'hidden'}>
-                    {prodCarrito.length > 0 ? 
-                    prodCarrito.map(x =>
+                    {prodCarrito.length > 0             ? 
+                    <AnimatePresence>
+                   { prodCarrito.map((x,{i}) =>
                     <Flex
-                    key={x.id}
+                    as={motion.div}
+                    initial={{
+                        opacity: 0,
+                        scale:0.9}}
+                    animate={{
+                        opacity: 1,
+                        scale:1,
+                        transition: {duration: .3 }}}
+                    exit={{
+                        opacity: 0,
+                        scale:0.9,
+                        transition: {duration: .2 }}}
+                    key={i}
                     w='100%'>
                         <ProductoCarrito
                         id={x.id}
                         producto={x.producto}
                         img={x.img}
                         precio={x.precio}/>
-                    </Flex>)                : 
+                    </Flex>
+                    )  }
+                    </AnimatePresence>                             :
                     <Flex
                     w='100%'
                     justify='center'
@@ -152,8 +151,8 @@ const Carrito = () => {
                     borderRadius='2px'>
                         <Text
                         textAlign='center'
-                        fontFamily="'Patrick Hand', cursive;"
-                        fontSize='1.3em'
+                        fontFamily="'Poppins', sans-serif"
+                        fontSize='1.1em'
                         fontStyle='italic'>
                             El carrito de compras se encuentra vacío
                         </Text>
