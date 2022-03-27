@@ -9,7 +9,6 @@ const Producto = () => {
     const carritoVisible = useSelector((state) => state.carritoVisible.visible)
     const {img, descripcion, producto} = infoProducto;
     const dispatch = useDispatch();
-    console.log(carritoVisible)
     return(
         <Flex
         w='100%'

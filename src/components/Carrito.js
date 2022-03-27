@@ -66,6 +66,18 @@ const Carrito = () => {
             return 0;
         }
     }
+
+    const whatsapp = () => {
+        let link = encodeURI(`https://api.whatsapp.com/send?phone=11111111111&text=*Pedido online*:`)
+        let total = 0
+        prodCarrito.forEach( (x) =>{ 
+            link += encodeURI(`*producto:* ${x.producto} *categoria:* ${x.categoria} *precio:* $${x.precio}`)
+            total += parseInt(x.precio)
+        })
+        link+= encodeURI(`*Total:* $${total}`)
+        return link
+    }
+
     const dispatch = useDispatch();
     return(
         <>
@@ -118,7 +130,7 @@ const Carrito = () => {
                 overflowY={prodCarrito.length >= 3 ? 'scroll' : 'hidden'}>
                     {prodCarrito.length > 0             ? 
                     <AnimatePresence>
-                   { prodCarrito.map((x,{i}) =>
+                   { prodCarrito.map((x,i) =>
                     <Flex
                     as={motion.div}
                     initial={{
@@ -170,9 +182,18 @@ const Carrito = () => {
                         Total: U$S {precioTotal(prodCarrito)}
                     </Text>
                     <Button
+                    as='a'
+                    href={whatsapp()}
+                    target="_blank"
+                    rel="noreferrer"
+                    alt='comprar'
                     colorScheme='black'
                     variant='outline'
-                    w='7em'>
+                    w='7em'
+                    style={{WebkitTapHighlightColor:'transparent'}}
+                    _focus={{
+                        outline:'none'
+                    }}>
                         Comprar
                     </Button>
                 </Flex>
