@@ -22,9 +22,7 @@ const Footer = () =>{
       justify='center'
       boxShadow='dark-lg'
       borderTop='1px solid gray'
-      p='1em'
-      position='absolute'
-      bottom={{base:'-15em',md:'0',xl:'-10em'}}>
+      p='1em'>
         <Flex
         direction='column'
         order={{base:'1',md:'0'}}

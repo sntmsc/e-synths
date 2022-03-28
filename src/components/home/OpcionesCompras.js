@@ -9,9 +9,8 @@ const OpcionesCompras = () => {
           w={{base:"90%",sm:'40%',md:"30%"}} 
           h={{base:"60%",sm:'70%',md:"100%"}} 
           alignItems="center" ml={{base:'0',sm:'.5em',md:"1em"}}
-          position="relative" 
           >
-            <Flex w="20%" height="60%">
+            <Flex w="20%" height="60%" >
               <Image src={icon} objectFit="contain" />
             </Flex>
             <Flex ml="1em" w="80%" h="100%" alignItems="flex-start" justify="center" direction="column">
@@ -27,8 +26,8 @@ const OpcionesCompras = () => {
       )
     }
     return(
-      <Flex w="100%" justifyContent="center" my="2em" top="40em">
-        <Flex w="95%" pt="1em" pb={{md:"4em",lg:'2em'}} bg={{base:"white",md:"orange.200"}} borderTop={{base:"1px solid black",md:"none"}} wrap="wrap">
+      <Flex w="100%" justifyContent="center" my="2em" >
+        <Flex w="95%" pt="1em"  pb={{md:"4em",lg:'2em'}} bg={{base:"white",md:"orange.200"}} borderTop={{base:"1px solid black",md:"none"}} wrap="wrap">
           <Item 
           icon={'/icons/camion.png'}
           primary={'Enviamos tu compra'} 

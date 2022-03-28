@@ -11,13 +11,12 @@ import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
 import Carrito from './components/Carrito';
 function App() {
-  const [isMobile] = useMediaQuery("(max-width: 750px)")
-
+  const [minWidth900] = useMediaQuery("(max-width: 900px)")
   return (
     <BrowserRouter>
       <div className="App" style={{maxWidth:'100%'}}>
         <ChakraProvider>
-          <Navbar isMobile={isMobile}/>
+          <Navbar  min minWidth900={minWidth900}/>
           <Carrito/>
           <Switch>
             <Route path="/" exact>

@@ -12,7 +12,7 @@ const ProductoCarrito = ({precio,producto,img, id}) =>{
     }
     return(
         <Grid
-        bg='orange.400'
+        bg='gray.400'
         w='100%'
         h='7em'
         p='1em'
@@ -104,7 +104,7 @@ const Carrito = () => {
             justify='center'
             w='20em'
             h='30em'
-            bg='orange.200'
+            bg='gray.200'
             border='1px black solid'
             borderRadius='15px'
             zIndex='100'
@@ -159,7 +159,7 @@ const Carrito = () => {
                     justify='center'
                     align='center'
                     p='1em'
-                    bg='orange.300'
+                    bg='gray.300'
                     borderRadius='2px'>
                         <Text
                         textAlign='center'

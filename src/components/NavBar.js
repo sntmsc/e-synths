@@ -18,7 +18,7 @@ import {Flex,
  import {HamburgerIcon, SearchIcon} from "@chakra-ui/icons" 
 
 
-const Navbar = ({isMobile}) => {
+const Navbar = ({minWidth900}) => {
    const dispatch = useDispatch();
 
     const Logo = () => { 
@@ -39,7 +39,7 @@ const Navbar = ({isMobile}) => {
           <Text
           ml="1em"
           fontFamily=" 'Rampart One', cursive;"
-          fontSize={{base:"1.5em",lg:"2em"}}
+          fontSize={{base:"1.4em",md:'1.5em', lg:"1.7em", '2xl':'1.9em'}}
          >
             Soundmaster
           </Text>
@@ -60,18 +60,25 @@ const Navbar = ({isMobile}) => {
 
           <Flex 
           m={{base:"1em",md:"1.5em",lg:"2em"}}
-          w={{base:"85%",md:"15em"}}
-          justify="center">
-            <form onSubmit={handleSearch} style={{display: 'flex'}}>
+          w={{base:"85%"}}
+          justify="center"
+          align='center'>
+            <Flex
+            as='form'
+            w='100%'
+            onSubmit={handleSearch}
+            style={{display: 'flex'}}
+            justify='center'>
               <Input
               mr=".5em"
               name="text"
               boxShadow="md"
-              maxW="25em"/>
+              width='100%'
+              maxW='30em'/>
               <IconButton type="submit" aria-label="buscador" icon={<SearchIcon/>}/>
-            </form>
+            </Flex>
           </Flex>
-         
+
         )
       }
   
@@ -94,7 +101,7 @@ const Navbar = ({isMobile}) => {
                     align="center"
                     >
                       <Text
-                      fontSize={{md:"1em",lg:"1.5em", xl:'1.5em'}}
+                      fontSize={{md:"1em",lg:"1.1em", xl:'1.2em', '2xl':'1.5em'}}
                       fontFamily="'Hind Siliguri', sans-serif"
                       _hover={{cursor:"pointer",color:'gray.600'}}>
                         {descripcion}
@@ -105,7 +112,8 @@ const Navbar = ({isMobile}) => {
           {descripcion === 'Productos' && 
               <Menu w='20%'> 
                 <Flex
-                w="20%">
+                w="20%"
+                align='center'>
                   <MenuButton 
                   as={Flex}
                   
@@ -113,7 +121,7 @@ const Navbar = ({isMobile}) => {
                   align="center"
                   _hover={{cursor:"pointer",color:'gray.600'}}>
                       <Text
-                        fontSize={{md:"1em",lg:"1.5em", xl:'1.5em'}}
+                        fontSize={{md:"1em",lg:"1.1em", xl:'1.2em', '2xl':'1.5em'}}
                         fontFamily="'Hind Siliguri', sans-serif"
                         >
                           {descripcion}
@@ -198,7 +206,7 @@ const Navbar = ({isMobile}) => {
       align="center"
       justify='space-between'
       >
-        {!isMobile && 
+        {!minWidth900 && 
         <>
         <Flex
         justify='flex-start'
@@ -222,7 +230,7 @@ const Navbar = ({isMobile}) => {
         </Flex>
         </>
         }
-        {isMobile && 
+        {minWidth900 && 
         <>
           <Flex>
             <MenuMobile/>
@@ -240,9 +248,10 @@ const Navbar = ({isMobile}) => {
         }
       </Flex>
     </Flex>
-    {isMobile &&
-    
-      <Buscador/>}
+    {minWidth900 &&
+    <Flex w='100%' justify='center'>
+      <Buscador/>
+    </Flex>}
   </>
   )
   }
