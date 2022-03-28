@@ -101,7 +101,7 @@ const Navbar = ({minWidth900}) => {
                     align="center"
                     >
                       <Text
-                      fontSize={{md:"1em",lg:"1.1em", xl:'1.2em', '2xl':'1.5em'}}
+                      fontSize={{md:"1em",lg:"1.1em", xl:'1.2em', '2xl':'1.3em'}}
                       fontFamily="'Hind Siliguri', sans-serif"
                       _hover={{cursor:"pointer",color:'gray.600'}}>
                         {descripcion}
@@ -121,7 +121,7 @@ const Navbar = ({minWidth900}) => {
                   align="center"
                   _hover={{cursor:"pointer",color:'gray.600'}}>
                       <Text
-                        fontSize={{md:"1em",lg:"1.1em", xl:'1.2em', '2xl':'1.5em'}}
+                        fontSize={{md:"1em",lg:"1.1em", xl:'1.2em', '2xl':'1.3em'}}
                         fontFamily="'Hind Siliguri', sans-serif"
                         >
                           {descripcion}
