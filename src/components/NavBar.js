@@ -25,7 +25,7 @@ const Navbar = ({isMobile}) => {
       return(
         <Link to={'/'} style={{textDecoration: 'none'}}>
         <Flex 
-        width="30%"
+        width="5em"
         height="100%"
         align="center"
         >
@@ -43,8 +43,8 @@ const Navbar = ({isMobile}) => {
          >
             Soundmaster
           </Text>
-          </Flex>
-          </Link>
+        </Flex>
+        </Link>
       )
     }
 
@@ -231,7 +231,8 @@ const Navbar = ({isMobile}) => {
                 alt='carrito de compras' 
                 objectFit='cover'
                 boxSize='2em'
-                m='0'
+                mr='1em'
+                ml='.5em'
                 cursor='pointer'
                 onClick={()=>dispatch(toggleCarrito())}/>
             </Flex>

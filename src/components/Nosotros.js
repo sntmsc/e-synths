@@ -9,22 +9,24 @@ const Nosotros = () =>{
       <Flex w='100%' my='3em'>
         <Stack w='100%' justify='center' align='center' spacing={10}>
           <Text
+          fontSize={{base:'1.5em',md:'2em'}}
+          mb='1em'
           fontFamily=" 'Poppins', sans-serif;"
-          fontSize={{base:'1.8em', lg:'2.5em',xl:'3em'}}
-          fontWeight='extrabold'
-          color='gray.500'
-          textShadow='1px 1px #000000'>Carlos y sus secuaces</Text>
+          fontWeight="bolder">Carlos y sus secuaces</Text>
           <Image 
-          boxSize={{base:'20em',lg:'40em',xl:'50em' }}
+           boxSize={{base:'19em'}}
           objectFit='cover' 
           src='/imgs/nosotros1.jpg' 
           alt='foto de nuestro espacio con sintetizadores'
-          border='3px solid'
-          borderRadius='5%'/>
-          <Flex w='90%'>
+          border='1px solid'
+          borderRadius='2px'/>
+          <Flex w='90%'
+          justify='center'>
             <Text
-            fontFamily="'Patrick Hand', cursive;"
-            fontSize={{base:'1.2em',lg:'1.4em',xl:'1.5em'}}
+            w='40em'
+            textAlign='center'
+            fontFamily="'Hind Siliguri', sans-serif"
+            fontSize={{base:'1.1em',lg:'1.2em',xl:'1.3em'}}
             mt='2em'
             mx={{base:'.5em',lg:'3em',xl:'5em'}}>{descripcion}</Text>
           </Flex>
