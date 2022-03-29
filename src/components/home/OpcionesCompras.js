@@ -6,9 +6,9 @@ const OpcionesCompras = () => {
     const Item = ({icon,primary,secondary}) => {
       return(
           <Flex 
-          w={{base:"90%",sm:'40%',md:"30%"}} 
-          h={{base:"60%",sm:'70%',md:"100%"}} 
-          alignItems="center" ml={{base:'0',sm:'.5em',md:"1em"}}
+          w={{base:"20em",md:"30%"}} 
+          h={{base:"5em",md:"100%"}} 
+          alignItems="center" ml={{base:'0',md:"1em"}}
           >
             <Flex w="20%" height="60%" >
               <Image src={icon} objectFit="contain" />
@@ -17,7 +17,7 @@ const OpcionesCompras = () => {
               <Text fontSize={{base:'md',sm:'lg',md:"xl"}} fontWeight="extrabold">
                 {primary}
               </Text>
-              <Text fontSize={{base:'sm',sm:'md',md:"lg"}} h="2em">
+              <Text fontSize={{base:'sm',md:"lg"}} h="2em">
                 {secondary}
               </Text>
             </Flex>
