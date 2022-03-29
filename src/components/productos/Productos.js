@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import {Flex, Text, HStack, Checkbox, Spinner} from "@chakra-ui/react"
+import {Flex, Text, HStack, Checkbox, Spinner, Box} from "@chakra-ui/react"
 import { CardProducto } from '../utils/CardProducto'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, useLocation } from 'react-router-dom'
@@ -121,9 +121,15 @@ const Productos = ({categoria, titulo,maxWidth950}) =>{
             alignItems="center"
             wrap="wrap">
               {isLoading ? 
+              <>
               <Spinner
               size='xl'
-              mb='2em'/> :  
+              mb='2em'/>
+              <Box
+              h='18em'>
+
+              </Box>
+              </> :  
               productos.map(x=>
                 <CardProducto
                 key={x.id}
