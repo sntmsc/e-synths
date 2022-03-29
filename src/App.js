@@ -11,12 +11,12 @@ import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
 import Carrito from './components/Carrito';
 function App() {
-  const [minWidth900] = useMediaQuery("(max-width: 900px)")
+  const [maxWidth950] = useMediaQuery("(max-width: 950px)");
   return (
     <BrowserRouter>
       <div className="App" style={{maxWidth:'100%'}}>
         <ChakraProvider>
-          <Navbar  min minWidth900={minWidth900}/>
+          <Navbar maxWidth950={maxWidth950}/>
           <Carrito/>
           <Switch>
             <Route path="/" exact>
@@ -26,6 +26,7 @@ function App() {
             key='sintetizadores'
             path='/sintetizadores' exact>
               <Productos
+              maxWidth950={maxWidth950}
               titulo={'Sintetizadores'}
               categoria={'sintetizadores'}/>
             </Route>
@@ -37,6 +38,7 @@ function App() {
             path='/drums' exact
             key='drums'>
               <Productos
+              maxWidth950={maxWidth950}
               titulo={'Drum Machines'}
               categoria={'drums'}/>
             </Route>
@@ -47,6 +49,7 @@ function App() {
             path='/groovebox' exact
             key='groovebox'>
               <Productos
+              maxWidth950={maxWidth950}
               titulo={'Samplers & Groovebox'}
               categoria={'groovebox'}/>
             </Route>

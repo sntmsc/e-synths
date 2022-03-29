@@ -18,7 +18,7 @@ import {Flex,
  import {HamburgerIcon, SearchIcon} from "@chakra-ui/icons" 
 
 
-const Navbar = ({minWidth900}) => {
+const Navbar = ({maxWidth950}) => {
    const dispatch = useDispatch();
 
     const Logo = () => { 
@@ -30,7 +30,7 @@ const Navbar = ({minWidth900}) => {
         align="center"
         >
           <Image
-          boxSize={{base:"2.5em",lg:"3.5em"}}
+          boxSize={{base:"2.5em",xl:"3.5em"}}
           objectFit="cover"
           src="/icons/logo-principal.png"
           alt="Logo principal"
@@ -39,7 +39,7 @@ const Navbar = ({minWidth900}) => {
           <Text
           ml="1em"
           fontFamily=" 'Rampart One', cursive;"
-          fontSize={{base:"1.4em",md:'1.5em', lg:"1.7em", '2xl':'1.9em'}}
+          fontSize={{base:"1.4em",md:'1.5em',xl:'1.7em','2xl':'1.9em'}}
          >
             Soundmaster
           </Text>
@@ -168,7 +168,7 @@ const Navbar = ({minWidth900}) => {
                     variant="ghost"
                 />
                 <MenuList w="20em" h="10em" bg="gray.200">
-                  <Link to={'/groovebox'} style={{textDecoration: 'none'}}>
+                  <Link to={'/sintetizadores'} style={{textDecoration: 'none'}}>
                     <MenuItem h="33.33%" justifyContent="center">
                     <Item descripcion="Productos"/>
                     </MenuItem >
@@ -206,7 +206,7 @@ const Navbar = ({minWidth900}) => {
       align="center"
       justify='space-between'
       >
-        {!minWidth900 && 
+        {!maxWidth950 && 
         <>
         <Flex
         justify='flex-start'
@@ -230,7 +230,7 @@ const Navbar = ({minWidth900}) => {
         </Flex>
         </>
         }
-        {minWidth900 && 
+        {maxWidth950 && 
         <>
           <Flex>
             <MenuMobile/>
@@ -248,7 +248,7 @@ const Navbar = ({minWidth900}) => {
         }
       </Flex>
     </Flex>
-    {minWidth900 &&
+    {maxWidth950 &&
     <Flex w='100%' justify='center'>
       <Buscador/>
     </Flex>}
