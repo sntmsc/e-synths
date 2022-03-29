@@ -10,6 +10,21 @@ const Footer = () =>{
         fontFamily=" 'Poppins', sans-serif;">{x}</Text>
       )
    
+      const Contacto = ({link, img, socialMedia}) =>{
+        return(
+          <a
+          href={link}
+          target="_blank"
+          style={{textDecoration: 'none',
+          WebkitTapHighlightColor:'transparent'}}>
+            <Image
+            src={img}
+            alt={socialMedia}
+            objectFit='cover'
+            boxSize='2em'/>
+          </a>
+        )
+      }
       
     return(
       <footer>
@@ -30,22 +45,18 @@ const Footer = () =>{
           <Stack
           direction='row'
           mb='1em'>
-            <Image
-            src='/icons/whatsapp.png'
-            alt='whatsapp'
-            objectFit='cover'
-            boxSize='2em'/>
-            <Image
-            src='/icons/facebook.png'
-            alt='facebook'
-            objectFit='cover'
-            boxSize='2em'/>
-            <Image
-            src='/icons/instagram-logo.png'
-            alt='instagram'
-            objectFit='cover'
-            boxSize='2em'/>
-            <Image/>
+          <Contacto
+          link={'https://wa.me/111111111'}
+          img={'/icons/whatsapp.png'}
+          socialMedia={'whatsapp'}/>
+          <Contacto
+          link={'https://www.facebook.com/'}
+          img={'/icons/facebook.png'}
+          socialMedia={'facebook'}/>
+          <Contacto
+          link={'https://www.instagram.com/'}
+          img={'/icons/instagram-logo.png'}
+          socialMedia={'instagram'}/>
           </Stack>
           {textoFooter(['Copyright © 2020-2021 Soundmaster'])}
         </Flex>

@@ -4,28 +4,34 @@ import {Flex, Stack, Image, Text} from "@chakra-ui/react"
 
 
 const Contacto = () =>{
-    const Cards = ({desc, icon,alts}) =>{
+    const Cards = ({desc, icon,alts,link}) =>{
       return(
-        <Flex direction='column'
-        boxSize='10em'
-        bg='transparent'
-        borderRadius='2%'
-        justify='center'
-        align='center'
-        my='1em'
-        mx={{base:'.5em',lg:'1em', xl:'2em'}} 
-        _hover={{bg:'gray.400', cursor:"pointer"}}>
-            <Image 
-            src={`/${icon}`}
-            alt= {alts}
-            boxSize='5em'
-            objectFit='cover'/>
-            <Text
-            mt='2em'
-            fontFamily=" 'Poppins', sans-serif;"
-            fontWeight="bolder"
-            fontSize='1em'>{desc}</Text>
-          </Flex>
+        <a
+        href={link}
+        target="_blank"
+        style={{textDecoration: 'none',
+        WebkitTapHighlightColor:'transparent'}}>
+          <Flex direction='column'
+          boxSize='10em'
+          bg='transparent'
+          borderRadius='2%'
+          justify='center'
+          align='center'
+          my='1em'
+          mx={{base:'.5em',lg:'1em', xl:'2em'}} 
+          _hover={{bg:'gray.400', cursor:"pointer"}}>
+              <Image 
+              src={`/${icon}`}
+              alt= {alts}
+              boxSize='5em'
+              objectFit='cover'/>
+              <Text
+              mt='2em'
+              fontFamily=" 'Poppins', sans-serif;"
+              fontWeight="bolder"
+              fontSize='1em'>{desc}</Text>
+            </Flex>
+          </a>
       )
   
     }
@@ -67,10 +73,10 @@ const Contacto = () =>{
         justify='center' 
         align='center' 
         my='2em'>
-          <Cards desc={'Whatsapp'} icon={'./icons/contactoWspp.png'} alts={'Whatsapp'}/> 
-          <Cards desc={'Facebook'} icon={'./icons/contactFb.png'} alts={'Facebook'}/> 
-          <Cards desc={'Instagram'} icon={'./icons/contactoIg.png'} alts={'Instagram'}/> 
-          <Cards desc={'+54 011 9356 0394'} icon={'./icons/contactoPhone.png'} alts={'teléfono'}/> 
+          <Cards desc={'Whatsapp'} icon={'./icons/contactoWspp.png'} alts={'Whatsapp'} link={'https://wa.me/111111111'}/> 
+          <Cards desc={'Facebook'} icon={'./icons/contactFb.png'} alts={'Facebook'} link={'https://www.facebook.com/'}/> 
+          <Cards desc={'Instagram'} icon={'./icons/contactoIg.png'} alts={'Instagram'} link={'https://www.instagram.com/'}/> 
+          <Cards desc={'+54 011 9356 0394'} icon={'./icons/contactoPhone.png'} alts={'telefono'} link={'tel:0111111111111'}/> 
         </Flex>
       </>
     )
