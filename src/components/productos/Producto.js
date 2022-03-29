@@ -27,11 +27,18 @@ const Producto = () => {
             fontWeight="bolder">
                 {producto}
             </Text>
-            <Text
-            w='40em'
-            textAlign='center'>
-                {descripcion}
-            </Text>
+            <Flex
+            w='90%'
+            justify='center'>
+                <Text
+                w='40em'
+                fontSize={{base:'1.1em',lg:'1.2em',xl:'1.3em'}}
+                mt='2em'
+                mx={{base:'.5em',lg:'3em',xl:'5em'}}
+                textAlign='center'>
+                    {descripcion}
+                </Text>
+            </Flex>
             <Button
             mt='2em'
             variant='outline'

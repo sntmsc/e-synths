@@ -41,10 +41,12 @@ const Categorias = () =>{
         justify='center'
         direction={{base:'column',md:'row'}}>
             {infoCategorias.map((x,i) =>
-            <Link to={x.route} style={{textDecoration: 'none'}}>
+            <Link
+            to={x.route}
+            style={{textDecoration: 'none'}}
+            key={i}>
               <Flex
               direction='column'
-              key={i}
               alignItems='center'
               justify='center'
               boxSize='15em'
