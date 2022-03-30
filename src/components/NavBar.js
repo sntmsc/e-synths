@@ -1,8 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getBusqueda } from '../reducers/listadoProductos'
-import { deleteSub } from '../reducers/homeProductosSubtitulo'
 import { toggleCarrito } from '../reducers/carrito/carritoVisible'
 import {Flex,
       Stack,
@@ -50,11 +49,12 @@ const Navbar = ({maxWidth950}) => {
 
       const Buscador = () =>{
         const dispatch = useDispatch();
+        const history = useHistory();
           const handleSearch = (e) =>{
             e.preventDefault();
             dispatch(getBusqueda(e.target.text.value));
-            dispatch(deleteSub())
             e.target.text.value = "";
+            history.push('/busquedas')
           }
         return(
 

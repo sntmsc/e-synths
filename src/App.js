@@ -10,6 +10,8 @@ import Productos from './components/productos/Productos'
 import Producto from './components/productos/Producto'
 import Footer from './components/Footer'
 import Carrito from './components/Carrito';
+import ProductosDestacados from './components/home/ProductosDestacados';
+
 function App() {
   const [maxWidth950] = useMediaQuery("(max-width: 950px)");
   return (
@@ -21,6 +23,9 @@ function App() {
           <Switch>
             <Route path="/" exact>
               <Home/>
+            </Route>
+            <Route path="/busquedas">
+              <ProductosDestacados/>
             </Route>
             <Route
             key='sintetizadores'
