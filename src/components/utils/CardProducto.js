@@ -49,7 +49,7 @@ export const CardProducto = ({nombre,precio,img, producto}) => {
                 <Text
                 my=".5em"
                 fontWeight="extrabold"
-                fontSize="1.2em">
+                fontSize="1em">
                     {nombre} 
                 </Text>
                 <Text
